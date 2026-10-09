@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bqi7jlx24irep" path="res://systems/GameManager.tscn" id="5_manager"]
 [ext_resource type="PackedScene" uid="uid://cs74rv1yesvlu" path="res://ui/HUD.tscn" id="6_hud"]
 [ext_resource type="Script" uid="uid://cu1f0q4v4xr07" path="res://scripts/PollutionCore.gd" id="7_pollution"]
-[ext_resource type="Script" path="res://scripts/AudioManager.gd" id="8_audio"]
+[ext_resource type="Script" uid="uid://b1t8o6f8dgdk5" path="res://scripts/AudioManager.gd" id="8_audio"]
 
 [node name="Main" type="Node2D" unique_id=1060580860]
 script = ExtResource("1_main_script")
@@ -39,5 +39,5 @@ scale = Vector2(2.2, 2.2)
 [node name="PollutionCore" type="Node" parent="." unique_id=155487908]
 script = ExtResource("7_pollution")
 
-[node name="AudioManager" type="Node" parent="."]
+[node name="AudioManager" type="Node" parent="." unique_id=1459703319]
 script = ExtResource("8_audio")

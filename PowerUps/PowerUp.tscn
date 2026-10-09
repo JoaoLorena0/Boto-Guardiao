@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2mxgk3uqxk0n"]
+
+[ext_resource type="Script" path="res://scripts/PowerUp.gd" id="1_powerup_script"]
+[ext_resource type="Texture2D" path="res://Sprites/PowerUps/power_rapid.png" id="2_power_texture"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_powerup"]
+radius = 13.0
+
+[node name="PowerUp" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_powerup_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_powerup")
+
+[node name="Visual" type="Sprite2D" parent="."]
+texture_filter = 1
+z_index = 1
+texture = ExtResource("2_power_texture")

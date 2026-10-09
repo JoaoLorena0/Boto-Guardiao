@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cfqe6rr3c08si"]
+
+[ext_resource type="Script" uid="uid://bnma6y5gtqaes" path="res://scripts/Player.gd" id="1_player_script"]
+[ext_resource type="Texture2D" uid="uid://cv61o81iqxhkl" path="res://Sprites/Player/boto.png" id="2_boto"]
+[ext_resource type="PackedScene" uid="uid://dj46v7c7cv7c5" path="res://Player/PlayerBullet.tscn" id="3_bullet"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(32, 20)
+
+[node name="Player" type="CharacterBody2D" unique_id=1797599986]
+collision_layer = 2
+script = ExtResource("1_player_script")
+bullet_scene = ExtResource("3_bullet")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=608287936]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_player")
+
+[node name="Boto" type="Sprite2D" parent="." unique_id=1462082382]
+texture_filter = 1
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("2_boto")
+
+[node name="FirePoint" type="Marker2D" parent="." unique_id=1706361789]
+position = Vector2(28, -3)

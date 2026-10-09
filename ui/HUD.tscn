@@ -1,0 +1,491 @@
+[gd_scene format=3 uid="uid://cs74rv1yesvlu"]
+
+[ext_resource type="Script" uid="uid://cu6ocqprbxojr" path="res://scripts/HUD.gd" id="1_hud_script"]
+[ext_resource type="FontFile" uid="uid://df7wlrb4xolfw" path="res://Fonts/PixelArcade.ttf" id="2_pixel_font"]
+
+[sub_resource type="Theme" id="Theme_pixel_hud"]
+default_font = ExtResource("2_pixel_font")
+default_font_size = 13
+Button/font_sizes/font_size = 15
+Button/fonts/font = ExtResource("2_pixel_font")
+Label/font_sizes/font_size = 13
+Label/fonts/font = ExtResource("2_pixel_font")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.0352941, 0.0784314, 0.137255, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.384314, 0.870588, 0.960784, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font = ExtResource("2_pixel_font")
+font_color = Color(0.835294, 1, 1, 1)
+outline_size = 4
+outline_color = Color(0.0352941, 0.0784314, 0.137255, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hud_text"]
+font = ExtResource("2_pixel_font")
+font_size = 13
+font_color = Color(0.835294, 1, 1, 1)
+outline_size = 3
+outline_color = Color(0.0313726, 0.0470588, 0.0823529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.0588235, 0.145098, 0.203922, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.14902, 0.321569, 0.4, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pollution_fill"]
+bg_color = Color(0.498039, 0.901961, 0.329412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_game_over_title"]
+font = ExtResource("2_pixel_font")
+font_size = 34
+font_color = Color(1, 0.835294, 0.282353, 1)
+outline_size = 7
+outline_color = Color(0.0313726, 0.0470588, 0.0823529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_game_over_text"]
+font = ExtResource("2_pixel_font")
+font_size = 15
+font_color = Color(0.835294, 1, 1, 1)
+outline_size = 4
+outline_color = Color(0.0313726, 0.0470588, 0.0823529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input"]
+bg_color = Color(0.0745098, 0.172549, 0.258824, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.835294, 0.282353, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_game_over"]
+bg_color = Color(0.0313726, 0.0470588, 0.0823529, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.835294, 0.282353, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.0745098, 0.172549, 0.258824, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.384314, 0.870588, 0.960784, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_wave_banner"]
+font = ExtResource("2_pixel_font")
+font_size = 32
+font_color = Color(0.835294, 1, 1, 1)
+outline_size = 6
+outline_color = Color(0.0313726, 0.0470588, 0.0823529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wave_subtitle"]
+font = ExtResource("2_pixel_font")
+font_size = 14
+font_color = Color(1, 0.835294, 0.282353, 1)
+outline_size = 4
+outline_color = Color(0.0313726, 0.0470588, 0.0823529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_combo"]
+font = ExtResource("2_pixel_font")
+font_size = 22
+font_color = Color(1, 0.835294, 0.282353, 1)
+outline_size = 5
+outline_color = Color(0.0313726, 0.0470588, 0.0823529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mission"]
+font = ExtResource("2_pixel_font")
+font_color = Color(0.835294, 1, 1, 1)
+outline_size = 4
+outline_color = Color(0.0313726, 0.0470588, 0.0823529, 1)
+
+[node name="Hud" type="CanvasLayer" unique_id=961643610]
+process_mode = 3
+script = ExtResource("1_hud_script")
+
+[node name="StatusPanel" type="PanelContainer" parent="." unique_id=1768341858]
+visible = false
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 344.0
+offset_bottom = 146.0
+theme = SubResource("Theme_pixel_hud")
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="StatusPanel" unique_id=974475711]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatusPanel/MarginContainer" unique_id=500249308]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="TitleLabel" type="Label" parent="StatusPanel/MarginContainer/VBoxContainer" unique_id=1346094889]
+layout_mode = 2
+text = "BOTO GUARDIAO"
+label_settings = SubResource("LabelSettings_title")
+
+[node name="PollutionLabel" type="Label" parent="StatusPanel/MarginContainer/VBoxContainer" unique_id=638337003]
+layout_mode = 2
+text = "POLUICAO"
+label_settings = SubResource("LabelSettings_hud_text")
+
+[node name="PollutionBar" type="ProgressBar" parent="StatusPanel/MarginContainer/VBoxContainer" unique_id=1476578895]
+custom_minimum_size = Vector2(300, 16)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pollution_fill")
+show_percentage = false
+
+[node name="InfoGrid" type="GridContainer" parent="StatusPanel/MarginContainer/VBoxContainer" unique_id=1756097359]
+layout_mode = 2
+columns = 2
+
+[node name="ScoreLabel" type="Label" parent="StatusPanel/MarginContainer/VBoxContainer/InfoGrid" unique_id=189882988]
+layout_mode = 2
+text = "PTS 000000"
+label_settings = SubResource("LabelSettings_hud_text")
+
+[node name="WaveLabel" type="Label" parent="StatusPanel/MarginContainer/VBoxContainer/InfoGrid" unique_id=1342437217]
+layout_mode = 2
+text = "ONDA 01"
+label_settings = SubResource("LabelSettings_hud_text")
+
+[node name="HealthLabel" type="Label" parent="StatusPanel/MarginContainer/VBoxContainer/InfoGrid" unique_id=76258604]
+layout_mode = 2
+text = "VIDA 3/3"
+label_settings = SubResource("LabelSettings_hud_text")
+
+[node name="SpecialLabel" type="Label" parent="StatusPanel/MarginContainer/VBoxContainer/InfoGrid" unique_id=1777938113]
+layout_mode = 2
+text = "ESP pronto"
+label_settings = SubResource("LabelSettings_hud_text")
+
+[node name="PowerUpLabel" type="Label" parent="StatusPanel/MarginContainer/VBoxContainer" unique_id=1724106679]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_hud_text")
+
+[node name="GameOverPanel" type="Control" parent="." unique_id=507200113]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_pixel_hud")
+
+[node name="Dim" type="ColorRect" parent="GameOverPanel" unique_id=800710511]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0156863, 0.0313726, 0.0588235, 0.72)
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverPanel" unique_id=360715095]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 193.0
+offset_right = 857.0
+offset_bottom = 461.0
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 22
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel/MarginContainer" unique_id=2102230854]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="GameOverPanel/MarginContainer/VBoxContainer" unique_id=1425750557]
+layout_mode = 2
+text = "FIM DE JOGO"
+label_settings = SubResource("LabelSettings_game_over_title")
+horizontal_alignment = 1
+
+[node name="GameOverMessage" type="Label" parent="GameOverPanel/MarginContainer/VBoxContainer" unique_id=2123054820]
+layout_mode = 2
+text = "Pressione Enter para jogar de novo."
+label_settings = SubResource("LabelSettings_game_over_text")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="NameInput" type="LineEdit" parent="GameOverPanel/MarginContainer/VBoxContainer" unique_id=772481396]
+custom_minimum_size = Vector2(420, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+theme_override_styles/focus = SubResource("StyleBoxFlat_input")
+placeholder_text = "DIGITE SEU NOME"
+alignment = 1
+max_length = 10
+caret_blink = true
+
+[node name="LeaderboardLabel" type="Label" parent="GameOverPanel/MarginContainer/VBoxContainer" unique_id=830784694]
+layout_mode = 2
+text = "PLACAR"
+label_settings = SubResource("LabelSettings_game_over_text")
+horizontal_alignment = 1
+
+[node name="UpgradePanel" type="PanelContainer" parent="." unique_id=351973054]
+process_mode = 3
+visible = false
+offset_left = 282.0
+offset_top = 154.0
+offset_right = 826.0
+offset_bottom = 506.0
+theme = SubResource("Theme_pixel_hud")
+theme_override_styles/panel = SubResource("StyleBoxFlat_game_over")
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradePanel" unique_id=1036241485]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradePanel/MarginContainer" unique_id=1627746003]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="UpgradePanel/MarginContainer/VBoxContainer" unique_id=754944372]
+layout_mode = 2
+text = "ESCOLHA UMA MELHORIA"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="UpgradePanel/MarginContainer/VBoxContainer" unique_id=1117422014]
+layout_mode = 2
+text = "A melhoria escolhida fica ativa ate a morte."
+label_settings = SubResource("LabelSettings_hud_text")
+horizontal_alignment = 1
+
+[node name="UpgradeButton1" type="Button" parent="UpgradePanel/MarginContainer/VBoxContainer" unique_id=771720161]
+custom_minimum_size = Vector2(490, 68)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
+text = "OPCAO 1"
+
+[node name="UpgradeButton2" type="Button" parent="UpgradePanel/MarginContainer/VBoxContainer" unique_id=435524580]
+custom_minimum_size = Vector2(490, 68)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
+text = "OPCAO 2"
+
+[node name="UpgradeButton3" type="Button" parent="UpgradePanel/MarginContainer/VBoxContainer" unique_id=1003710332]
+custom_minimum_size = Vector2(490, 68)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
+text = "OPCAO 3"
+
+[node name="WaveBanner" type="Control" parent="." unique_id=1579449988]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -70.0
+offset_right = 228.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(230, 70)
+theme = SubResource("Theme_pixel_hud")
+
+[node name="WaveBannerLabel" type="Label" parent="WaveBanner" unique_id=1710079801]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 24.0
+offset_bottom = 72.0
+grow_horizontal = 2
+text = "ONDA 02"
+label_settings = SubResource("LabelSettings_wave_banner")
+horizontal_alignment = 1
+
+[node name="WaveBannerSubtitle" type="Label" parent="WaveBanner" unique_id=883243019]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 76.0
+offset_bottom = 106.0
+grow_horizontal = 2
+text = "MAIS INIMIGOS NO RIO"
+label_settings = SubResource("LabelSettings_wave_subtitle")
+horizontal_alignment = 1
+
+[node name="ComboLabel" type="Label" parent="." unique_id=315204117]
+offset_left = 392.0
+offset_top = 16.0
+offset_right = 734.0
+offset_bottom = 58.0
+theme = SubResource("Theme_pixel_hud")
+label_settings = SubResource("LabelSettings_combo")
+horizontal_alignment = 1
+
+[node name="MissionLabel" type="Label" parent="." unique_id=960214752]
+visible = false
+offset_left = 730.0
+offset_top = 16.0
+offset_right = 1010.0
+offset_bottom = 48.0
+theme = SubResource("Theme_pixel_hud")
+text = "MISSAO 0/20"
+label_settings = SubResource("LabelSettings_mission")
+horizontal_alignment = 2
+
+[node name="StartMenu" type="Control" parent="." unique_id=337339616]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_pixel_hud")
+
+[node name="Dim" type="ColorRect" parent="StartMenu" unique_id=595072402]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0313726, 0.0588235, 0.62)
+
+[node name="MainPanel" type="PanelContainer" parent="StartMenu" unique_id=1997593992]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 178.0
+offset_right = 742.0
+offset_bottom = 478.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_game_over")
+
+[node name="MarginContainer" type="MarginContainer" parent="StartMenu/MainPanel" unique_id=1266698686]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu/MainPanel/MarginContainer" unique_id=334954003]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="StartMenu/MainPanel/MarginContainer/VBoxContainer" unique_id=891388916]
+layout_mode = 2
+text = "BOTO GUARDIAO"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="StartMenu/MainPanel/MarginContainer/VBoxContainer" unique_id=276114451]
+layout_mode = 2
+text = "Proteja o rio e sobreviva as ondas."
+label_settings = SubResource("LabelSettings_hud_text")
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="StartMenu/MainPanel/MarginContainer/VBoxContainer" unique_id=468217714]
+custom_minimum_size = Vector2(300, 46)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
+text = "COMECAR"
+
+[node name="QuitButton" type="Button" parent="StartMenu/MainPanel/MarginContainer/VBoxContainer" unique_id=1020888129]
+custom_minimum_size = Vector2(300, 46)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
+text = "SAIR"
+
+[node name="ControlsPanel" type="PanelContainer" parent="StartMenu" unique_id=1363480973]
+layout_mode = 0
+offset_left = 844.0
+offset_top = 403.0
+offset_right = 1124.0
+offset_bottom = 617.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="StartMenu/ControlsPanel" unique_id=1923692507]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu/ControlsPanel/MarginContainer" unique_id=1573596080]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="StartMenu/ControlsPanel/MarginContainer/VBoxContainer" unique_id=2043617048]
+layout_mode = 2
+text = "CONTROLES"
+label_settings = SubResource("LabelSettings_title")
+
+[node name="MoveLabel" type="Label" parent="StartMenu/ControlsPanel/MarginContainer/VBoxContainer" unique_id=1790395976]
+layout_mode = 2
+text = "WASD / SETAS  mover"
+label_settings = SubResource("LabelSettings_hud_text")
+
+[node name="ShootLabel" type="Label" parent="StartMenu/ControlsPanel/MarginContainer/VBoxContainer" unique_id=466164123]
+layout_mode = 2
+text = "ESPACO / MOUSE  atirar"
+label_settings = SubResource("LabelSettings_hud_text")
+
+[node name="DashLabel" type="Label" parent="StartMenu/ControlsPanel/MarginContainer/VBoxContainer" unique_id=1272040321]
+layout_mode = 2
+text = "SHIFT  dash"
+label_settings = SubResource("LabelSettings_hud_text")
+
+[node name="SpecialLabel" type="Label" parent="StartMenu/ControlsPanel/MarginContainer/VBoxContainer" unique_id=910070371]
+layout_mode = 2
+text = "E  especial"
+label_settings = SubResource("LabelSettings_hud_text")
+
+[node name="UpgradeLabel" type="Label" parent="StartMenu/ControlsPanel/MarginContainer/VBoxContainer" unique_id=380126824]
+layout_mode = 2
+text = "A cada 5 ondas: escolha upgrade"
+label_settings = SubResource("LabelSettings_hud_text")

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cm6juaxfipc57"]
+
+[ext_resource type="Script" uid="uid://10nxb35o4m2t" path="res://scripts/Enemy.gd" id="1_enemy_script"]
+[ext_resource type="Texture2D" path="res://Sprites/Enemy/enemy_shooter_new.png" id="2_trash"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_trash"]
+radius = 21.0
+
+[node name="EnemyTrash" type="Area2D" unique_id=1341219561]
+collision_mask = 6
+script = ExtResource("1_enemy_script")
+speed = 135.0
+hp = 2
+pollution_damage = 11
+score_value = 18
+contact_damage = 2
+movement_pattern = 2
+wave_amplitude = 20.0
+wave_frequency = 2.2
+enemy_role = "shooter"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=149534311]
+shape = SubResource("CircleShape2D_trash")
+
+[node name="LixoSprite" type="Sprite2D" parent="." unique_id=1210325690]
+texture_filter = 1
+z_index = 1
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("2_trash")

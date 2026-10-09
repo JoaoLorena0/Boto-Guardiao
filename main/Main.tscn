@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bllcyffshxhns"]
+
+[ext_resource type="Script" uid="uid://dgpdmngyx1ttk" path="res://main/main.gd" id="1_main_script"]
+[ext_resource type="Texture2D" uid="uid://bylcp25jrambq" path="res://Sprites/BackGround/BackGround.png" id="2_background"]
+[ext_resource type="PackedScene" uid="uid://cfqe6rr3c08si" path="res://Player/Player.tscn" id="3_player"]
+[ext_resource type="PackedScene" uid="uid://dg8y2dvoxb2xs" path="res://systems/EnemySpawner.tscn" id="4_spawner"]
+[ext_resource type="PackedScene" uid="uid://bqi7jlx24irep" path="res://systems/GameManager.tscn" id="5_manager"]
+[ext_resource type="PackedScene" uid="uid://cs74rv1yesvlu" path="res://ui/HUD.tscn" id="6_hud"]
+[ext_resource type="Script" uid="uid://cu1f0q4v4xr07" path="res://scripts/PollutionCore.gd" id="7_pollution"]
+[ext_resource type="Script" path="res://scripts/AudioManager.gd" id="8_audio"]
+
+[node name="Main" type="Node2D" unique_id=1060580860]
+script = ExtResource("1_main_script")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1741696378]
+position = Vector2(512, 300)
+
+[node name="BackGround" type="Sprite2D" parent="." unique_id=308489693]
+position = Vector2(512, 300)
+scale = Vector2(1.08, 1.08)
+texture = ExtResource("2_background")
+
+[node name="BackGroundLoop" type="Sprite2D" parent="." unique_id=2098516834]
+position = Vector2(1609.92, 300)
+scale = Vector2(1.08, 1.08)
+texture = ExtResource("2_background")
+flip_h = true
+
+[node name="Player" parent="." unique_id=1363557295 instance=ExtResource("3_player")]
+position = Vector2(91, 358)
+scale = Vector2(2.2, 2.2)
+
+[node name="EnemySpawner" parent="." unique_id=1395408156 instance=ExtResource("4_spawner")]
+
+[node name="GameManager" parent="." unique_id=1934782740 instance=ExtResource("5_manager")]
+
+[node name="Hud" parent="." unique_id=961643610 instance=ExtResource("6_hud")]
+
+[node name="PollutionCore" type="Node" parent="." unique_id=155487908]
+script = ExtResource("7_pollution")
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("8_audio")

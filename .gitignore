@@ -1,3 +1,11 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Local/exported builds
+/build/
+/*.exe
+/*.console.exe
+/*.pck
+/*.zip
+/docs/*.import

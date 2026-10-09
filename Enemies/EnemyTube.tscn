@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwwd2htdei5mt"]
+
+[ext_resource type="Script" uid="uid://10nxb35o4m2t" path="res://scripts/Enemy.gd" id="1_enemy_script"]
+[ext_resource type="Texture2D" path="res://Sprites/Enemy/enemy_tank_new.png" id="2_tube_sprite"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tube"]
+size = Vector2(34, 22)
+
+[node name="EnemyTube" type="Area2D" unique_id=1341219561]
+collision_layer = 1
+collision_mask = 6
+script = ExtResource("1_enemy_script")
+speed = 95.0
+hp = 6
+pollution_damage = 18
+score_value = 34
+contact_damage = 3
+movement_pattern = 2
+wave_amplitude = 18.0
+wave_frequency = 2.4
+enemy_role = "tank"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tube")
+
+[node name="Visual" type="Sprite2D" parent="."]
+texture_filter = 1
+z_index = 1
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("2_tube_sprite")

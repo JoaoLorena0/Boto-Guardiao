@@ -1,0 +1,15 @@
+[gd_scene load_steps=8 format=3 uid="uid://dg8y2dvoxb2xs"]
+
+[ext_resource type="Script" uid="uid://dobo5v6wc3kxm" path="res://scripts/EnemySpawner.gd" id="1_spawner_script"]
+[ext_resource type="PackedScene" uid="uid://cm6juaxfipc57" path="res://Enemies/EnemyTrash.tscn" id="2_trash"]
+[ext_resource type="PackedScene" uid="uid://dh2uty813o443" path="res://Enemies/EnemyCan.tscn" id="3_can"]
+[ext_resource type="PackedScene" uid="uid://bwwd2htdei5mt" path="res://Enemies/EnemyTube.tscn" id="4_tube"]
+[ext_resource type="PackedScene" path="res://Enemies/EnemyBoss.tscn" id="5_boss"]
+[ext_resource type="PackedScene" path="res://PowerUps/PowerUp.tscn" id="6_powerup"]
+[ext_resource type="PackedScene" path="res://Enemies/EnemyHunter.tscn" id="7_hunter"]
+
+[node name="EnemySpawner" type="Node2D" unique_id=1395408156]
+script = ExtResource("1_spawner_script")
+enemy_scenes = Array[PackedScene]([ExtResource("3_can"), ExtResource("2_trash"), ExtResource("4_tube"), ExtResource("7_hunter")])
+boss_scene = ExtResource("5_boss")
+power_up_scene = ExtResource("6_powerup")

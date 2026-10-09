@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" uid="uid://10nxb35o4m2t" path="res://scripts/Enemy.gd" id="1_enemy_script"]
+[ext_resource type="Texture2D" path="res://Sprites/Enemy/enemy_hunter_new.png" id="2_hunter_sprite"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hunter"]
+radius = 18.0
+
+[node name="EnemyHunter" type="Area2D"]
+collision_mask = 6
+script = ExtResource("1_enemy_script")
+speed = 165.0
+hp = 2
+pollution_damage = 12
+score_value = 24
+contact_damage = 2
+movement_pattern = 4
+wave_amplitude = 30.0
+wave_frequency = 3.2
+enemy_role = "hunter"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hunter")
+
+[node name="Visual" type="Sprite2D" parent="."]
+texture_filter = 1
+z_index = 1
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("2_hunter_sprite")
